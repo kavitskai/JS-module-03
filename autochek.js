@@ -1,587 +1,905 @@
-// 1. Запиши условие в инструкции if так, чтобы функция работала правильно.
+// let name = 'Resort Hotel';
+// let stars = 5;
+// const es6hotel = {
+//   name,
+//   stars,
+//   capacity: 100,
+// };
 
-// function checkAge(age) {
-//   if (age >= 18) {
-//     return 'Вы совершеннолетний человек';
-//   }
+// console.log(es6hotel);
 
-//   return 'Вы не совершеннолетний человек';
-// }
 
-// console.log(checkAge(20));
-// console.log(checkAge(8));
-// console.log(checkAge(14));
-// console.log(checkAge(38));
 
-//2. Функция checkPassword получает пароль пользователя в параметр password, 
-//проверяет его на совпадение с паролем администратора в переменной 
-//ADMIN_PASSWORD и возвращает сообщение о результате сравнения.
-//Проведи рефакторинг кода функции checkStorage используя паттерн 
-//«ранний возврат»:
-//удали переменную message;
-//удали else;
-//код должен работать так же, как и до оптимизации.
+// 1. Присвой переменной apartment объект описывающий квартиру со
+// следующими характеристиками:
+// imgUrl - фотография, значение 'https://via.placeholder.com/640x480';
+// descr - описание, значение 'Просторная квартира в центре';
+// rating - рейтинг, значение 4;
+// price - цена, значение 2153;
+// tags - метаинформация, массив ['premium', 'promoted', 'top'].
 
-// function checkPassword(password) {
-//     const ADMIN_PASSWORD = 'jqueryismyjam';
+// const apartment = {
+// imgUrl: 'https://via.placeholder.com/640x480',
+// descr: 'Просторная квартира в центре',
+// rating: 4,
+// price: 2153,
+// tags: ['premium', 'promoted', 'top'], 
+// };
+
+// console.log(apartment);
+
+// 2. Дополни объект квартиры свойством owner, значением которого будет
+// объект с информацией о владельце.Добавь ему следующие свойства:
+// name - имя владельца, значение 'Генри';
+// phone - телефон, значение '982-126-1588';
+// email - почта, значение 'henry.carter@aptmail.com'.
+
+// const apartment = {
+//     imgUrl: 'https://via.placeholder.com/640x480',
+//     descr: 'Просторная квартира в центре',
+//     rating: 4,
+//     price: 2153,
+//     tags: ['premium', 'promoted', 'top'],
+//     owner: {
+//       name: 'Генри',
+//       phone:'982-126-1588',
+//       email:'henry.carter@aptmail.com',   
+//     }
+// };
     
-//     // return password === ADMIN_PASSWORD ? 'Добро пожаловать!' : 'Доступ запрещен, неверный пароль!';
+// console.log(apartment);
+
+// 3. Дополни код присвоив объявленным переменным выражения обращения к
+// соответствующим свойствам обьекта apartment.
+// aptRating - рейтинг;
+// aptDescr - описание;
+// aptPrice - цена;
+// aptTags - теги.
+
+// const apartment = {
+//     imgUrl: 'https://via.placeholder.com/640x480',
+//     descr: 'Просторная квартира в центре',
+//     rating: 4,
+//     price: 2153,
+//     tags: ['premium', 'promoted', 'top'],
+//   };
   
-//    if (password === ADMIN_PASSWORD) {
-//     return 'Добро пожаловать!';
-//   } 
-//   return 'Доступ запрещен, неверный пароль!';//
-// }
-
-// console.log(checkPassword('mangohackzor'));
-// console.log(checkPassword('polyhax'));
-// console.log(checkPassword('jqueryismyjam'));
-
-// const clients = ['Mango', 'Poly', 'Ajax'];
-// const clientNameToFind = 'Poly';
-// let message;
-
-// for (const client of clients) {
-//   /*
-//    * На каждой итерации мы будем проверять совпадает ли элемент массива с
-//    * именем клиента. Если совпадает то мы записываем в message сообщение
-//    * об успехе и делаем break чтобы не искать дальше
-//    */
-
-//   if (client === clientNameToFind) {
-//     message = 'Клиент с таким именем есть в базе данных!';
-//     break;
-//   }
-
-//   // Если они не совпадают то запишем в resultMsg сообщeние об отсутсвии имени
-//   message = 'Клиента с таким именем нету в базе данных!';
-// }
-
-// console.log(message); // Клиент с таким именем есть в базе данных!
-
-// const clients = ['Mango', 'Poly', 'Ajax'];
-// const clientNameToFind = 'Poly';
-// let message = 'Клиента с таким именем нету в базе данных!';
-
-// for (const client of clients) {
-//   if (client === clientNameToFind) {
-//     message = 'Клиент с таким именем есть в базе данных!';
-//     break;
-//   }
-
-//   // Если не совпадает, то на этой итерации ничего не делаем
-// }
-
-// console.log(message); // Клиент с таким именем есть в базе данных!
-
-// 3. Функция checkStorage проверяет возможность оформления заказа 
-//и возвращает сообщение о результате.Она принимает два параметра, 
-//значения которых будут задаваться во время её вызова.
-
-//available - доступное количество товаров на складе;
-//ordered - количество единиц товара в заказе.
-//Проведи рефакторинг кода функции checkStorage используя паттерн 
-//«ранний возврат».
-
-// function checkStorage(available, ordered) {
-//   if (ordered === 0) {`
-//     return 'В заказе еще нет товаров';
-//   }
-
-//   if (ordered > available) {
-//     return 'Слишком большой заказ, на складе недостаточно товаров!';
-//   } 
-
-//   return 'Заказ оформлен, с вами свяжется менеджер';
-// }
-
-// console.log(checkStorage(100, 50));
-// console.log(checkStorage(100, 130));
-// console.log(checkStorage(70, 0));
-// console.log(checkStorage(200, 20));
-// console.log(checkStorage(200, 250));
-// console.log(checkStorage(150, 0));
-
-// 4. Объяви переменную fruits и присвой ей массив фруктов - 
-//строк 'яблоко', 'слива', 'груша' и 'апельсин'.
-
-// 5. Объяви три переменные и присвой каждой из них значение, 
-//используя нотацию квадратных скобок.
-
-// const fruits = ['яблоко', 'слива', 'груша', 'апельсин'];
-// const firstElement = fruits[0];
-// const secondElement = fruits[1];
-// const lastElement = fruits[fruits.length - 1];
-
-// console.log(firstElement);
-// console.log(secondElement);
-// console.log(lastElement);
-
-// 6. Переопредели значения элементов с индексами 1 и 3. 
-//Замени 'слива' на 'персик', а 'апельсин' на 'банан'.
-
-// const fruits = ['яблоко', 'слива', 'груша', 'апельсин'];
-// fruits[1] = 'персик';
-// fruits[3] = 'банан';
-
-// console.log(fruits);
-
-// 7. Объяви переменную fruitsArrayLength и 
-//присвой ей длину массива fruits используя свойство length.
-
-// const fruits = ['яблоко', 'персик', 'груша', 'банан'];
-
-// const fruitsArrayLength = fruits.length;
-// console.log(fruitsArrayLength);
-
-//8. Объяви две перемнные:
-// lastElementIndex	индекс последнего элемента масcива fruits через 
-//длина_массива - 1
-//lastElement	значение последнего элемента массива
-
-// const fruits = ['яблоко', 'персик', 'груша', 'банан'];
-
-// const lastElementIndex = fruits.length - 1;
-// const lastElement = fruits[lastElementIndex];
-// console.log(lastElementsIndex);
-// console.log(lastElement);
-
-// 9. Напиши функцию getExtremeElements(array) которая принимает
-//один параметр array - массив элементов произвольной длины.
-//Функция должна возвращать массив из двух элементов - первого 
-//и последнего элемента параметра array.
-
-// function getExtremeElements(array) {
-//     // Пиши код ниже этой строки
-//   return [array[0], array[array.length - 1]];
-
-
-//     // Пиши код выше этой строки
-// }
-// console.log(getExtremeElements([1, 2, 3, 4, 5]));
-// console.log(getExtremeElements(['Земля', 'Марс', 'Венера']));
-// console.log(getExtremeElements(['яблоко', 'персик', 'груша', 'банан']));
-
-// function splitMessage(message, delimeter) {
-//   let words;
 //   // Пиши код ниже этой строки
-  
-//   words = message.split(delimeter);
-  
+//   const aptRating = apartment.rating;
+//   const aptDescr = apartment.descr;
+//   const aptPrice = apartment.price;
+//   const aptTags = apartment.tags;
 //   // Пиши код выше этой строки
-//   return words;
-// }
-// console.log(splitMessage('Манго спешит на поезд', ' '));
-// console.log(splitMessage('Манго', ''));
-// console.log(splitMessage('лучшее_за_неделю', '_'));
 
-// 11. Сервису гравировки украшений нужна функция, которая бы автоматически 
-//считала цену гравировки, в зависимости от количества слов и цены за слово.
-//Объявлена функция calculateEngravingPrice(message, pricePerWord).
-//Эта функция принимает строку, состоящую из слов разделённых только 
-//пробелами(параметр message) и цену гравировки одного слова
-//(параметр pricePerWord).
-//Напиши тело функции, чтобы она возвращала общую стоимость гравировки 
-//всех слов в строке.
-// function calculateEngravingPrice(message, pricePerWord) {
-//   // Пиши код ниже этой строки
+// console.log(aptRating);
+// console.log(aptDescr);
+// console.log(aptPrice);
+// console.log(aptTags);
 
-// const totalPrice = message.split (' ').length * pricePerWord;
-//   return totalPrice
+// 4. Дополни код присвоив объявленным переменным выражения 
+//обращения к соответствующим свойствам обьекта apartment.
+//ownerName - имя владельца;
+//ownerPhone - телефон владельца;
+//ownerEmail - почта владельца;
+//numberOfTags - количество элементов массива в свойстве tags;
+//firstTag - первый элемент массива в свойстве tags;
+//lastTag - последний элемент массива в свойстве tags.
 
-//   // Пиши код выше этой строки
-// }
-// console.log(calculateEngravingPrice('JavaScript у меня в крови', 10));
-// console.log(calculateEngravingPrice('JavaScript у меня в крови', 20));
-// console.log(calculateEngravingPrice('Веб-разработка это творческая работа', 40));
-// console.log(calculateEngravingPrice('Веб-разработка это творческая работа', 20));
+// const apartment = {
+//   imgUrl: 'https://via.placeholder.com/640x480',
+//   descr: 'Просторная квартира в центре',
+//   rating: 4,
+//   price: 2153,
+//   tags: ['premium', 'promoted', 'top'],
+//   owner: {
+//     name: 'Генри',
+//     phone: '982-126-1588',
+//     email: 'henry.carter@aptmail.com',
+//   },
+// };
 
-// 12. Дополни код функции makeStringFromArray(array, delimeter) так, 
-//чтобы она возвращала в переменной string результат соединения элементов 
-//массива array c разделителем delimeter - строку.
-
-// function makeStringFromArray(array, delimeter) {
-//   let string;
-//   // Пиши код ниже этой строки
- 
-//  string = array.join(delimeter);
-  
-//   // Пиши код выше этой строки
-//   return string;
-// }
-
-// console.log(makeStringFromArray(['Манго', 'спешит', 'на', 'поезд'], ' '));
-// console.log(makeStringFromArray(['М', 'а', 'н', 'г', 'о'], ''));
-// console.log(makeStringFromArray(['лучшее', 'за', 'неделю'], '_'));
-
-
-// 13. Напиши функцию slugify(title) которая принимает заголовок 
-//статьи, параметр title, и возвращает slug, созданный из этой 
-//строки.
-//Значением параметра title будут строки, слова которых 
-//разделены только пробелами.
-//Все символы slug должны быть в нижнем регистре.
-//Все слова slug должна быть разделены тире.
-// function slugify(title) {
-//   // Пиши код ниже этой строки
- 
-//  const slug = title.toLowerCase().split(' ').join('-');
-  
-//  return slug;
-    
-//   // Пиши код выше этой строки
-// }
-
-// console.log(slugify('Массивы для новичков'));
-// console.log(slugify('Английский для разработчика'));
-// console.log(slugify('Десять секретов JavaScript'));
-// console.log(slugify('Как стать JUNIOR разработчиком за ДВЕ НЕДЕЛИ'));
-
-// 14. Дополни код так, чтобы переменные содержали частичные 
-//копии исходного массива fruits.
-//firstTwoEls - массив из первых двух элементов.
-//nonExtremeEls - массив из всех элементов кроме первого и 
-//последнего.
-//lastThreeEls - массив из трёх последних элементов.
-
-// const fruits = ['яблоко', 'слива', 'груша', 'апельсин', 'банан'];
 // // Пиши код ниже этой строки
-// const firstTwoEls = fruits.slice(0, 2);
-// const nonExtremeEls = fruits.slice(1, fruits.length-1);
-// const lastThreeEls = fruits.slice(-3);
+// const ownerName = apartment.owner.name;
+// const ownerPhone = apartment.owner.phone;
+// const ownerEmail = apartment.owner.email;
+// const numberOfTags = apartment.tags.length;
+// const firstTag = apartment.tags[0];
+// const lastTag = apartment.tags[2];
+// // Пиши код выше этой строки
 
-// console.log(firstTwoEls);
-// console.log(nonExtremeEls);
-// console.log(lastThreeEls);
+// console.log(ownerName);
+// console.log(ownerPhone);
+// console.log(ownerEmail);
+// console.log(numberOfTags);
+// console.log(firstTag);
+// console.log(lastTag);
 
-// 15. Дополни код так, чтобы в переменной allClients получился 
-//массив всех элементов массивов oldClients и newClients.
+// 5.Дополни код присвоив объявленным переменным выражения обращения к
+// соответствующим свойствам обьекта apartment используя синтаксис
+// «квадратных скобок».
+// aptRating - рейтинг;
+// aptDescr - описание;
+// aptPrice - цена;
+// aptTags - теги.
 
-// const oldClients = ['Манго', 'Аякс', 'Поли', 'Киви'];
-// const newClients = ['Персик', 'Хьюстон'];
+// const apartment = {
+//   imgUrl: 'https://via.placeholder.com/640x480',
+//   descr: 'Просторная квартира в центре',
+//   rating: 4,
+//   price: 2153,
+//   tags: ['premium', 'promoted', 'top'],
+// };
 
-// const allClients = oldClients.concat(newClients);
-// console.log(allClients);
+// // Пиши код ниже этой строки
+// const aptRating = apartment['rating'];
+// const aptDescr = apartment['descr'];
+// const aptPrice = apartment['price'];
+// const aptTags = apartment['tags'];
+// // Пиши код выше этой строки
 
-// 16. Напиши функцию makeArray(firstArray, secondArray, 
-//maxLength) для создания нового массива со всеми элементами 
-//двух исходных firstArray и secondArray.
-//Параметр maxLength содержит максимально допустимую длину 
-//нового массива.
-//Если количество элементов нового массива больше maxLength, 
-//функция должна вернуть копию массива длиной maxLength элементов.
-//В противном случае функция должна вернуть новый массив целиком.
+// console.log(aptRating);
+// console.log(aptDescr);
+// console.log(aptPrice);
+// console.log(aptTags);
 
-// function makeArray(firstArray, secondArray, maxLength) {
-//     // Пиши код ниже этой строки
-//    const newArray = firstArray.concat(secondArray).slice(0, maxLength);
+// 6. Дополни код обновив значения свойств объекта apartment:
 
-//     return newArray;
-//     // Пиши код выше этой строки
+// цену в свойстве price на 5000;
+// рейтинг квартиры в свойстве rating на 4.7;
+// имя владельца во вложенном свойстве name на 'Генри Сибола';
+// массив тегов в свойстве tags добавив в конец строку 'trusted'.
+
+// const apartment = {
+//   imgUrl: 'https://via.placeholder.com/640x480',
+//   descr: 'Просторная квартира в центре',
+//   rating: 4,
+//   price: 2153,
+//   tags: ['premium', 'promoted', 'top'],
+//   owner: {
+//     name: 'Генри',
+//     phone: '982-126-1588',
+//     email: 'henry.carter@aptmail.com'
 //   }
+// };
 
-// console.log(makeArray(['Манго', 'Поли'], ['Аякс', 'Челси'], 3));
-// console.log(makeArray(['Манго', 'Поли', 'Хьюстон'], ['Аякс', 'Челси'], 4));
-// console.log(makeArray(['Манго'], ['Аякс', 'Челси', 'Поли', 'Хьюстон'], 3));
-// console.log(makeArray(['Земля', 'Юпитер'], ['Нептун', 'Уран'], 2));
-// console.log(makeArray(['Земля', 'Юпитер'], ['Нептун', 'Уран'], 4));
-// console.log(makeArray(['Земля', 'Юпитер'], ['Нептун', 'Уран', 'Венера'], 0));
+// // Пиши код ниже этой строки
+// apartment.price = 5000;
+// apartment.rating = 4.7;
+// apartment.owner.name = 'Генри Сибола';
+// apartment.tags.push('trusted');
 
-// 17. Функция logNumbersInRange(start, end) логирует все целые числа 
-//в диапазоне от start до end включительно.Дополни тело функции так, 
-//чтобы она работала правильно.
+// console.log(apartment);
 
-// const start = 3;
-// const end = 7;
+// 7.Добавь объекту apartment несколько новых свойств:
 
-// for (let i = start; i <= end; i += 1) {
-//   console.log(i);
-// }
+// area - площадь в квадратных метрах, число 60;
+// rooms - количество комнат, число 3;
+// location - местоположение квартиры, обьект со следующими вложенными свойствами;
+// country - страна, строка 'Ямайка';
+// city - город, строка 'Кингстон'.
 
-// 18. Напиши функцию calculateTotal(number), которая принимает целое 
-//число(параметр number) и возвращает сумму всех целых чисел от 
-//единицы и до этого числа.Например, если number равно 3, 
-//то сумма это 1 + 2 + 3, то есть 6.
-
-// function calculateTotal(number) {
-//   let totalSum = 0;
-  
-//   for (let i = 0; i <= number; i += 1) {
-//     totalSum += i;
+// const apartment = {
+//   imgUrl: 'https://via.placeholder.com/640x480',
+//   descr: 'Просторная квартира в центре',
+//   rating: 4.7,
+//   price: 5000,
+//   tags: ['premium', 'promoted', 'top', 'trusted'],
+//   owner: {
+//     name: 'Генри Сибола',
+//     phone: '982-126-1588',
+//     email: 'henry.carter@aptmail.com'
 //   }
+// };
 
-//   return totalSum;
-// }
+// // Пиши код ниже этой строки
+// apartment.area = 60;
+// apartment.rooms = 3;
+// apartment.location = {
+// country: 'Ямайка',
+// city: 'Кингстон',};
 
-// console.log(calculateTotal(1));
-// console.log(calculateTotal(3));
-// console.log(calculateTotal(7));
-// console.log(calculateTotal(18));
-// console.log(calculateTotal(24)); 
+// console.log(apartment);
 
-// 19. Дополни код цикла for так, чтобы он последовательно 
-// //логировал все элементы массива fruits.
+// 8.Дополни код объявления объекта так, чтобы у него были свойства name,
+// price, image и tags со значениями из переменных с аналогичными именами.
+// Обязательно используй синтаксис коротких свойств.
+// Объявлена переменная product.
+// Значение переменной product это объект.
+// Значение вложенного свойства name это строка 'Ремонтный дроид'.
+// Значение вложенного свойства price это число 2500.
+// Значение вложенного свойства image это строка 'https://via.placeholder.com/640x480'.
+// Значение вложенного свойства tags это массив ['on sale', 'trending', 'best buy'].
 
-// const fruits = ['яблоко', 'слива', 'груша', 'апельсин'];
+// const name = 'Ремонтный дроид';
+// const price = 2500;
+// const image = 'https://via.placeholder.com/640x480';
+// const tags = ['on sale', 'trending', 'best buy'];
 
-// for (let i = 0; i < fruits.length; i += 1) {
-//   const fruit = fruits[i];
-//   console.log(fruit);
-// }
-
-// 20. Напиши функцию calculateTotalPrice(order), которая принимает 
-//один параметр order - массив чисел, и рассчитывает общую сумму его 
-//элементов.Общая сумма элементов должна сохраняться в переменной total, 
-//которая возвращается, как результат работы функции.
-
-// function calculateTotalPrice(order) {
-//   let total = 0;
-//   for (let i = 0; i < order.length; i += 1) {
-//     total += order[i];
-// }
-//   return total;
-// }
-
-// console.log(calculateTotalPrice([12, 85, 37, 4]));
-// console.log(calculateTotalPrice([164, 48, 291]));
-// console.log(calculateTotalPrice([412, 371, 94, 63, 176]));
-
-
-// 21. Напиши фукцнию findLongestWord(string) которая принимает 
-//произвольную строку состоящую только из слов разделённых 
-//пробелом(параметр string) и возвращает самое длинное слово в этой строке.
-
-// function findLongestWord(string) {
+// const product = {
 //   // Пиши код ниже этой строки
-//   let words = string.split(' ');
-//   let longestWord = words[0]; 
-  
-//   for (let word of words) {
-//     if (word.length > longestWord.length) {
-//       longestWord = word;
-//     }
-//   }
-//     return longestWord;
-//     // Пиши код выше этой строки
-// }
+//  name,
+//  price,
+//  image,
+//  tags,
 
-// console.log(findLongestWord('The quick brown fox jumped over the lazy dog'));
-// console.log(findLongestWord('Google do a roll'));
-// console.log(findLongestWord('May the force be with you'));
+//   // Пиши код выше этой строки
+// };
 
-// 22. Дополни код функции createArrayOfNumbers(min, max) так, 
-//чтобы она возвращала массив всех целых чисел от значения min до max.
-
-// function createArrayOfNumbers(min, max) {
-//   const numbers = [];
-//   for (let i = min; i <= max; i += 1) {
-//     numbers.push(i);
-//   }
-//   return numbers;
-// }
-
-// console.log(createArrayOfNumbers(1, 3));
-// console.log(createArrayOfNumbers(14, 17));
-// console.log(createArrayOfNumbers(29, 34));
-
-// 23. Напиши функцию filterArray(numbers, value), которая 
-//принимает массив чисел(параметр numbers) и возвращает новый массив, 
-//в котором будут только те элементы массива numbers, которые больше 
-//чем значение параметра value(число).
-
-// function filterArray(numbers, value) {
-//   // Пиши код ниже этой строки
-//   let newArray = [];
-  
-//   for (const number of numbers) {
-//   if (number > value) {newArray.push(number);}}
-  
-//   return newArray;
+// // console.log(product);
+// 9.Дополни код объявления объекта credentials так, чтобы в результате у него
+// были два свойства: email и password, имена которых хранятся в переменных
+// emailInputName и passwordInputName.
+// Значением свойства email должна быть строка 'henry.carter@aptmail.com', а
+// значением свойства password - строка 'jqueryismyjam'.
  
-//   // Пиши код выше этой строки
-// }
+// const emailInputName = 'email';
+// const passwordInputName = 'password';
 
-// console.log(filterArray([1, 2, 3, 4, 5], 3));
-// console.log(filterArray([1, 2, 3, 4, 5], 4));
-// console.log(filterArray([1, 2, 3, 4, 5], 5));
-// console.log(filterArray([12, 24, 8, 41, 76], 38));
-// console.log(filterArray([12, 24, 8, 41, 76], 20));
-
-// 24. Функция checkFruit(fruit) принимает строку с названием фрукта 
-//(параметр fruit), и проверяет есть ли такой фрукт в массиве fruits.
-//Дополни код функции так, что если:
-//фрукт есть в массиве, то функция возвращает true;
-//фрукта нет в массиве, то функция возвращает false.
-
-// function checkFruit(fruit) {
-//   const fruits = ['яблоко', 'слива', 'груша', 'апельсин'];
-
-//   return fruits.includes(fruit);
-// }
-
-// console.log(checkFruit('слива'));
-// console.log(checkFruit('мандарин'));
-// console.log(checkFruit('груша'));
-// console.log(checkFruit('Груша'));
-// console.log(checkFruit('яблоко'));
-
-
-// 25. Общими элементами массивов называют те элементы, 
-//которые присутствуют во всех массивах.
-//Например, в двух массивах [1, 3, 5] и [0, 8, 5, 3] общими 
-//будут числа 3 и 5, т.к.они присутствуют в обоих исходных массивах.
-//А числа 0, 1 и 8 присутствуют только в одном из массивов.
-//Напиши функцию getCommonElements(array1, array2) которая получает 
-//два массива произвольной длины в параметры array1 и array2, 
-//и возвращает новый массив, состоящий из тех элементов, 
-//которые присутствуют в обоих исходных массивах.
-
-// function getCommonElements(array1, array2) {
+// const credentials = {
 //   // Пиши код ниже этой строки
-// let newArray = [];
+//   [emailInputName]:'henry.carter@aptmail.com',
+//   [passwordInputName]:'jqueryismyjam',
   
-//   for (const element of array1){
-//   if (array2.includes(element)){
-//   newArray.push(element);}}
-  
-//   return newArray;
-
 //     // Пиши код выше этой строки
+// };
+// console.log(credentials);
+
+// 10. Перебери объект apartment используя цикл for...in и запиши 
+//в массив keys все его ключи, а в массив values все значения его свойств.
+
+// const apartment = {
+//   descr: 'Просторная квартира в центре',
+//   rating: 4,
+//   price: 2153,
+// };
+// const keys = [];
+// const values = [];
+// // Пиши код ниже этой строки
+// for (const key in apartment) {
+//     keys.push(key);
+//     values.push(apartment[key]);
 // }
 
-// console.log(getCommonElements([1, 2, 3], [2, 4]));
-// console.log(getCommonElements([1, 2, 3], [2, 1, 17, 19]));
-// console.log(getCommonElements([24, 12, 27, 3], [12, 8, 3, 36, 27]));
-// console.log(getCommonElements([10, 20, 30, 40], [4, 30, 17, 10, 40]));
-// console.log(getCommonElements([1, 2, 3], [10, 20, 30]));
+// console.log(keys);
+// console.log(values);
 
-// 26. Выполни рефакторинг кода функции calculateTotalPrice(order) 
-//заменив цикл for на for...of.
+//11. Выполни рефакторинг решения предыдущего задания 
+//добавив в цикл for...in проверку на собственное свойство.
 
-// function calculateTotalPrice(order) {
-//   let total = 0;
+// const keys = [];
+// const values = [];
+// const advert = {
+//   service: 'apt',
+// };
+// const apartment = Object.create(advert);
+// apartment.descr = 'Просторная квартира в центре';
+// apartment.rating = 4;
+// apartment.price = 2153;
+
+// for (const key in apartment) {
 //   // Пиши код ниже этой строки
-  
-//   for (let item of order)
-//   {
-//     total += item;
-//   }
-
+//   if (apartment.hasOwnProperty(key)){
+//     keys.push(key);
+//   values.push(apartment[key]);
+// }
 //   // Пиши код выше этой строки
-//   return total;
+// }
+// console.log(keys);
+// console.log(values);
+
+// 12. Напиши функцию countProps(object), которая считает и 
+//возвращает количество собственных свойств объекта в параметре 
+//object.Используй переменную propCount для хранения количества 
+//свойств объекта.
+
+// function countProps(object) {
+//   let propCount = 0;
+//   // Пиши код ниже этой строки
+//  for (const key in object)
+//  {if (object.hasOwnProperty(key)) {
+//  propCount += 1}; 
+//  }
+//   // Пиши код выше этой строки
+//   return propCount;
+// }
+// console.log(countProps({}));
+// console.log(countProps({name: 'Mango', age: 2}));
+// console.log(countProps({mail: 'poly@mail.com', isOnline: true, score: 500}));
+
+// 13. Перебери объект apartment используя метод Object.keys() и 
+//цикл for...of.Запиши в переменную keys массив ключей собственных 
+//свойств объекта apartment, и добавь в массив values все значения 
+//его свойств.
+
+// const apartment = {
+//   descr: 'Просторная квартира в центре',
+//   rating: 4,
+//   price: 2153,
+// };
+// const values = [];
+// // Пиши код ниже этой строки
+// const keys = Object.keys(apartment);
+// for (const key of keys) {
+//     values.push(apartment[key])
+// }
+// console.log(keys);
+// console.log(values);
+
+//14. Выполни рефакторинг функции countProps(object) 
+//используя метод Object.keys() и, возможно, цикл for...of.
+
+// function countProps(object) {
+//   // Пиши код ниже этой строки
+//     let propCount = 0;
+    
+//     const keys = Object.keys(object);
+//     propCount = keys.length;
+    
+//   return propCount;
 // }
 
-// console.log(calculateTotalPrice([12, 85, 37, 4]));
-// console.log(calculateTotalPrice([164, 48, 291]));
-// console.log(calculateTotalPrice([412, 371, 94, 63, 176]));
+// console.log(countProps({}));
+// console.log(countProps({ name: 'Mango', age: 2 }));
+// console.log(countProps({ mail: 'poly@mail.com', isOnline: true, score: 500 }));
 
-// 27. Выполни рефакторинг функции filterArray(numbers, value) 
-//заменив цикл for на for...of.
+// 15. Запиши в переменную keys массив ключей собственных свойств объекта 
+//apartment, а в переменную values массив всех значений его свойств.
+//Используй методы Object.keys() и Object.values().
 
-// function filterArray(numbers, value) {
-//   // Пиши код ниже этой строки
-//   const filteredNumbers = [];
+// const apartment = {
+//   descr: 'Просторная квартира в центре',
+//   rating: 4,
+//   price: 2153,
+// };
 
-//   for (let number of numbers)
-//    {
-//     if (number > value) {
-//       filteredNumbers.push(number);
+// const keys = Object.keys(apartment);
+// const values = Object.values(apartment);
+
+// console.log(keys);
+// console.log(values);
+
+//16. Напиши функцию countTotalSalary(salaries) которая принимает 
+//объект зарплат, где имя свойства это имя сотрудника, а значение 
+//свойства это зарплата.Функция должна рассчитать общую сумму зарплат 
+//сотрудников и вернуть её.Используй переменную totalSalary для хранения 
+//общей суммы зарплаты.
+
+// function countTotalSalary(salaries) {
+//   let totalSalary = 0;
+//     const values = Object.values(salaries);
+//         for (const value of values) {
+//         totalSalary += value;
 //     }
-//   }
-//   return filteredNumbers;
-//   // Пиши код выше этой строки
+    
+//   return totalSalary;
 // }
 
-// console.log(filterArray([1, 2, 3, 4, 5], 3));
-// console.log(filterArray([1, 2, 3, 4, 5], 4));
-// console.log(filterArray([1, 2, 3, 4, 5], 5));
-// console.log(filterArray([12, 24, 8, 41, 76], 38));
-// console.log(filterArray([12, 24, 8, 41, 76], 20));
+// console.log(countTotalSalary({}));
+// console.log(countTotalSalary({ mango: 100, poly: 150, alfred: 80 }));
+// console.log(countTotalSalary({ kiwi: 200, poly: 50, ajax: 150 }));
 
-//28. Дополни выражения остатка от деления так, 
-//чтобы код проходил тесты.
+//17. Перебери массив объектов colors используя цикл for...of. 
+//Добавь в массив hexColors значения свойств hex, а в массив 
+//rgbColors значения свойств rgb из всех объектов массива colors.
 
-// const a = 3 % 1;
-// const b = 4 % 3;
-// const c = 11 % 4;
-// const d = 12 % 7;
-// const e = 8 % 6;
+// const colors = [
+//   { hex: '#f44336', rgb: '244,67,54' },
+//   { hex: '#2196f3', rgb: '33,150,243' },
+//   { hex: '#4caf50', rgb: '76,175,80' },
+//   { hex: '#ffeb3b', rgb: '255,235,59' },
+// ];
 
-// console.log(a);
-// console.log(b);
-// console.log(c);
-// console.log(d);
-// console.log(e);
+// const hexColors = [];
+// const rgbColors = [];
 
-//29. Напиши функцию getEvenNumbers(start, end) которая 
-//возвращает массив всех чётных чисел от start до end.
-//Чётным считается число которое делится на 2 без остатка.
-
-// function getEvenNumbers(start, end) {
-    // Пиши код ниже этой строки
-//   const evenArray = [];
-  
-//   for (let i=start; i<=end; i+=1) {
-//   if (i%2 === 0){
-//   evenArray.push(i)}}
-  
-//   return evenArray;
-
-   
-//     // Пиши код выше этой строки
-//   }
-  
-// console.log(getEvenNumbers(2, 5));
-// console.log(getEvenNumbers(3, 11));
-// console.log(getEvenNumbers(6, 12));
-// console.log(getEvenNumbers(8, 8));
-// console.log(getEvenNumbers(7, 7));
-
-//30. Дополни код так, чтобы в переменную number записывалось 
-//первое число от start до end, которое делится на 5 без остатка.
-
-// const start = 6;
-// const end = 27;
-// let number;
-
-// for (let i = start; i < end; i += 1) {
-//   if (i % 5 === 0) {
-//     number = i;
-//     break;
-//   }
+// for (const color of colors) {
+//     hexColors.push(color.hex);
+//     rgbColors.push(color.rgb);
 // }
 
-// console.log(number);
+// console.log(hexColors);
+// console.log(rgbColors);
 
-//31. Если цикл находится в теле функции, то оператор break не 
-//прекращает выполнение функции, а только прервёт цикл.
-//Для того чтобы прерывать выполнение сразу цикла и функции 
-//есть оператор return.
-//В примере ищем число 3. Как только выполнится условие if, 
-//делаем возврат, который прервёт выполнение цикла и функции.
+// 18. Напиши функцию getProductPrice(productName) которая 
+//принимает один параметр productName - название продукта.
+//Функция ищет объект продукта с таким именем(свойство name) 
+//в массиве products и возвращает его цену(свойство price).
+//Если продукт с таким названием не найден, функция должна 
+//возвращать null.
 
+// const products = [
+//   { name: 'Радар', price: 1300, quantity: 4 },
+//   { name: 'Сканер', price: 2700, quantity: 3 },
+//   { name: 'Дроид', price: 400, quantity: 7 },
+//   { name: 'Захват', price: 1200, quantity: 9 },
+// ];
 
-//32. Напиши функцию includes(array, value), которая делает 
-//тоже самое, что и метод массива массив.includes(значение) - 
-//проверяет, есть ли в массиве array значение value, возвращая 
-//true если есть и false в противном случае.
-//При выполнении этой задачи в теле функции includes() нельзя 
-//использовать метод массив.includes(значение).
-
-// function includes(array, value) {
+// function getProductPrice(productName) {
 //   // Пиши код ниже этой строки
-//   for (const element of array) {
-//     if (element === value){
-//     return true;}
-//       }
+//   for (const product of products) {
+//     if (productName === product.name) {
+//     return product.price};
+//   }
+//    return null
+   
+//   // Пиши код выше этой строки
+// }
+// console.log(getProductPrice('Радар'));
+// console.log(getProductPrice('Захват'));
+// console.log(getProductPrice('Сканер'));
+// console.log(getProductPrice('Дроид'));
+// console.log(getProductPrice('Двигатель'));
 
-//   return false;
+// 19. Напиши функцию getAllPropValues(propName) которая 
+//принимает один параметр propName - имя(ключ) свойства.
+//Функция должна вернуть массив всех значений свойства с 
+//таким именем из каждого объекта в массиве products.
+//Если в объектах нет свойства с таким именем, функция 
+//должна вернуть пустой массив.
+
+// const products = [
+//   { name: 'Радар', price: 1300, quantity: 4 },
+//   { name: 'Сканер', price: 2700, quantity: 3 },
+//   { name: 'Дроид', price: 400, quantity: 7 },
+//   { name: 'Захват', price: 1200, quantity: 9 },
+// ];
+
+// function getAllPropValues(propName) {
+//   // Пиши код ниже этой строки
+//   const propValues = [];
+//   for (const product of products) {
+//   const keys = Object.keys(product);
+//   for (const key of keys) {
+//   if(key === propName)
+//   {propValues.push(product[propName]);}
+//   }
+//   }
+//   return propValues;
+    
+//   // Пиши код выше этой строки
+// }
+// console.log(getAllPropValues('name'));
+// console.log(getAllPropValues('quantity'));
+// console.log(getAllPropValues('price'));
+// console.log(getAllPropValues('category'));
+
+// 20. Напиши функцию calculateTotalPrice(productName) которая 
+//принимает один параметр productName - название товара.
+//Функция должна вернуть общую стоимость(цена * количество) 
+//товара с таким именем из массива products.
+
+// const products = [
+//   { name: 'Радар', price: 1300, quantity: 4 },
+//   { name: 'Сканер', price: 2700, quantity: 3 },
+//   { name: 'Дроид', price: 400, quantity: 7 },
+//   { name: 'Захват', price: 1200, quantity: 9 },
+// ];
+
+// function calculateTotalPrice(productName) {
+//   // Пиши код ниже этой строки
+//     let totalPrice = 0;
+//     for (const product of products) { 
+//      const values = Object.values(product);
+//     if (values.includes(productName)){
+//           totalPrice = product.price * product.quantity;
+//       }
+//   }
+//   return totalPrice;   
+    
+//   // Пиши код выше этой строки
+// }
+// console.log(calculateTotalPrice('Бластер'));
+// console.log(calculateTotalPrice('Радар'));
+// console.log(calculateTotalPrice('Дроид'));
+// console.log(calculateTotalPrice('Захват'));
+// console.log(calculateTotalPrice('Сканер'));
+
+//21. Пришел трёхдневный прогноз максимальных температур и 
+//мы считаем среднюю температуру за три дня(meanTemperature).
+//Замени объявления переменных yesterday, today и tomorrow 
+//одной операцией деструктуризации свойств объекта 
+//highTemperatures.
+
+// const highTemperatures = {
+//   yesterday: 28,
+//   today: 26,
+//   tomorrow: 33,
+// };
+// // Пиши код ниже этой строки
+
+// const {yesterday, today, tomorrow} = highTemperatures;
+
+// // Пиши код выше этой строки
+// const meanTemperature = (yesterday + today + tomorrow) / 3;
+// console.log(meanTemperature);
+
+// 22. В прогнозе максимальных температур также может быть 
+//необязательное свойство icon - иконка погоды.
+//Замени объявления переменных yesterday, today, tomorrow 
+//и icon одной операцией деструктуризации свойств объекта 
+//highTemperatures.Задай значение по умолчанию для 
+//icon - строку 'https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg'.
+
+// const highTemperatures = {
+//   yesterday: 28,
+//   today: 26,
+//   tomorrow: 33,
+// };
+// // Пиши код ниже этой строки
+
+// const {yesterday, today, tomorrow, 
+//        icon = 'https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg'} = highTemperatures;
+
+// // Пиши код выше этой строки
+// const meanTemperature = (yesterday + today + tomorrow) / 3;
+// console.log(meanTemperature);
+
+// 23. Замени объявления переменных highYesterday, highToday, 
+//highTomorrow и highIcon одной операцией деструктуризации 
+//свойств объекта highTemperatures.Задай значение по умолчанию 
+//для highIcon - строку 'https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg'.
+
+// const highTemperatures = {
+//   yesterday: 28,
+//   today: 26,
+//   tomorrow: 33,
+// };
+// // Пиши код ниже этой строки
+
+// const {yesterday:highYesterday, today:highToday, tomorrow:highTomorrow, icon:highIcon = 'https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg'} = highTemperatures;
+// // Пиши код выше этой строки
+// const meanTemperature = (highYesterday + highToday + highTomorrow) / 3;
+
+// console.log(meanTemperature);
+
+// 24. Выполни рефакторинг цикла for...of так, 
+//чтобы в нём использовалась деструктуризация объекта..
+
+// const colors = [
+//   { hex: '#f44336', rgb: '244,67,54' },
+//   { hex: '#2196f3', rgb: '33,150,243' },
+//   { hex: '#4caf50', rgb: '76,175,80' },
+//   { hex: '#ffeb3b', rgb: '255,235,59' },
+// ];
+
+// const hexColors = [];
+// const rgbColors = [];
+// // Пиши код ниже этой строки
+
+// for (const {hex, rgb} of colors) {
+//   hexColors.push(hex);
+//   rgbColors.push(rgb);
+// }
+// console.log(hexColors);
+// console.log(rgbColors);
+
+// 25. Мы получили прогноз погоды на два дня, с 
+//минимальными и максимальными температурами, а также 
+//необязательными иконками.Замени объявления всех переменных 
+//одной операцией деструктуризации свойств объекта forecast.
+//Задай значение по умолчанию для иконок, переменных todayIcon 
+//и tomorrowIcon - строку 'https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg'.
+
+// const forecast = {
+//   today: {
+//     low: 28,
+//     high: 32,
+//     icon: 'https://www.flaticon.com/svg/static/icons/svg/861/861059.svg',
+//   },
+//   tomorrow: {
+//     low: 27,
+//     high: 31,
+//   },
+// };
+// // Пиши код ниже этой строки
+
+// const { today: {low:lowToday, high:highToday, icon:todayIcon = 'https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg' }, tomorrow: {low:lowTomorrow, high:highTomorrow, icon:tomorrowIcon = 'https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg' }} = forecast;
+// console.log(forecast);
+
+//26. Функция calculateMeanTemperature(forecast) принимает один 
+//параметр forecast - объект температур на два дня следующего 
+//формата.
+//{
+//today: { low: 10, high: 20 },tomorrow: { low: 20, high: 30 }}
+//Замени объявления переменных todayLow, todayHigh, tomorrowLow и 
+//tomorrowHigh одной операцией деструктуризации свойств объекта 
+//forecast.
+
+// // Пиши код ниже этой строки
+// function calculateMeanTemperature(forecast) {
+//   const {today:{low:todayLow, high:todayHigh}, tomorrow:{low:tomorrowLow, high:tomorrowHigh}} = forecast;
+  
+//     // Пиши код выше этой строки
+//   return (todayLow + todayHigh + tomorrowLow + tomorrowHigh) / 4;
+// }
+
+// console.log(calculateMeanTemperature({
+//   today: { low: 10, high: 20 },
+//   tomorrow: { low: 20, high: 30 }
+// }));
+
+//27. В переменной scores хранится массив результатов тестирования. 
+//Используя распыление и методы Math.max() и Math.min() дополни код 
+//так, чтобы в переменной bestScore был самый высокий балл, а в 
+//worstScore самый низкий.
+
+// const scores = [89, 64, 42, 17, 93, 51, 26];
+// // Пиши код ниже этой строки
+
+// const bestScore = Math.max(...scores);
+// const worstScore = Math.min(...scores);
+
+// console.log(bestScore);
+// console.log(worstScore);
+
+//28. В переменных firstGroupScores, secondGroupScores и 
+//thirdGroupScores хранятся результаты тестирования отдельных 
+//групп.Используя распыление дополни код так, чтобы:
+//В переменной allScores хранился массив всех результатов 
+//от первой до третьей группы.
+//В переменной bestScore был самый высокий общий балл.
+//В переменной worstScore был самый низкий общий балл.
+
+// const firstGroupScores = [64, 42, 93];
+// const secondGroupScores = [89, 14, 51, 26];
+// const thirdGroupScores = [29, 47, 18, 97, 81];
+// // Пиши код ниже этой строки
+// const allScores = [...firstGroupScores, ...secondGroupScores, ...thirdGroupScores];
+// const bestScore = Math.max(...allScores);
+// const worstScore = Math.min(...allScores);
+
+// console.log(allScores);
+// console.log(bestScore);
+// console.log(worstScore);
+
+//29. В конструкторе можно создавать новые тесты, для которых 
+//есть настройки по умолчанию которые хранятся в переменной 
+//defaultSettings.Во время создания теста, все или часть настроек 
+//можно переопределить, они хранятся в переменной overrideSettings.
+//Для того чтобы получить финальные настройки теста, необходимо 
+//взять настройки по умолчанию и поверх них применить 
+//переопределённые настройки.Дополни код так, чтобы в переменной 
+//finalSettings получился объект финальных настроек теста.
+
+// const defaultSettings = {
+//   theme: 'light',
+//   public: true,
+//   withPassword: false,
+//   minNumberOfQuestions: 10,
+//   timePerQuestion: 60,
+// };
+// const overrideSettings = {
+//   public: false,
+//   withPassword: true,
+//   timePerQuestion: 30,
+// };
+// // Пиши код ниже этой строки
+// const finalSettings = {...defaultSettings, ...overrideSettings};
+
+// console.log(finalSettings);
+
+//30. Напиши функцию makeTask(data) которая принимает один параметр 
+//data - объект со следующими свойствами.
+//text - текст задачи.
+//category - категория задачи.
+//priority - приоритет задачи.
+//Функция должна составить и вернуть новый объект задачи, 
+//не изменяя напрямую параметр data.В новом объекте должно 
+//быть свойство completed, значение которого хранится в 
+//одноимённой локальной переменной.
+//В параметре data гарантированно будет только свойство text, 
+//а остальные два, category и priority, могут отсутствовать.
+//Тогда, в новом объекте задачи, в свойствах category и priority 
+//должны быть значения по умолчанию, хранящиеся в одноимённых 
+//локальных переменных.
+
+// function makeTask(data) {
+//   const completed = false;
+//   const category = 'Общее';
+//   const priority = 'Обычный';
+//   // Пиши код ниже этой строки
+//    return { completed, category, priority, ...data};
 //   // Пиши код выше этой строки
 // }
 
-// console.log(includes([1, 2, 3, 4, 5], 3));
-// console.log(includes([1, 2, 3, 4, 5], 17));
-// console.log(includes(['Земля', 'Марс', 'Венера', 'Юпитер', 'Сатурн'], 'Юпитер'));
-// console.log(includes(['Земля', 'Марс', 'Венера', 'Юпитер', 'Сатурн'], 'Уран'));
-// console.log(includes(['яблоко', 'слива', 'груша', 'апельсин'], 'слива'));
-// console.log(includes(['яблоко', 'слива', 'груша', 'апельсин'], 'киви'));
+// console.log(makeTask({}));
+// console.log(makeTask({ category: 'Домашнее', priority: 'Низкий', text: 'Вынести мусор' }));
+// console.log(makeTask({ category: 'Финансы', text: 'Забрать проценты' }));
+// console.log(makeTask({ priority: 'Низкий', text: 'Выбрать шампунь' }));
+// console.log(makeTask({ text: 'Купить хлеб' }));
+
+//31. Используя операцию rest дополни код функции add() так, 
+//чтобы она принимала любое количество аргументов, считала и 
+//возвращала их сумму.
+
+// Пиши код ниже этой строки
+// function add(...args) {
+//   let sum = 0;
+//   for (const arg of args) {
+//   sum += arg};
+//   return sum;
+//   // Пиши код выше этой строки
+// }
+
+// console.log(add(15, 27));
+// console.log(add(12, 4, 11, 48));
+// console.log(add(32, 6, 13, 19, 8));
+// console.log(add(74, 11, 62, 46, 12, 36));
+
+//32. Функция addOverNum() считает сумму всех аргументов. 
+//Измени параметры и тело функции addOverNum() так, чтобы она 
+//считала сумму только тех аргументов, которые больше чем заданное 
+//число.Это число должно быть первым параметром функции.
+
+// Пиши код ниже этой строки
+// function addOverNum(firstNumber,...args) {
+//   let total = 0;
+
+//   for (const arg of args) {
+//     if(firstNumber < arg) {
+//     total += arg;}
+//   }
+
+//   return total;
+//   // Пиши код выше этой строки
+// }
+
+// console.log(addOverNum(50, 15, 27));
+// console.log(addOverNum(10, 12, 4, 11, 48, 10, 8));
+// console.log(addOverNum(15, 32, 6, 13, 19, 8));
+// console.log(addOverNum(20, 74, 11, 62, 46, 12, 36));
+
+// 33. Функция findMatches() принимает произвольное количество 
+//аргументов.Первым аргументом всегда будет массив чисел, 
+//а остальные аргументы будут просто числами.
+//Дополни код функции так, чтобы она возвращала новый массив 
+//matches, в котором будут только те аргументы, начиная со второго, 
+//которые есть в массиве первого аргумента.
+//Например, findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7) должна 
+//вернуть массив[1, 2], потому что только они есть в массиве 
+//первого аргумента.
+
+// // Пиши код ниже этой строки
+// function findMatches(firstArg, ...args) {
+//   const matches = []; // Не изменяй эту строку
+//   for (const arg of args) {
+//   if (firstArg.includes(arg)){
+//   matches.push(arg);}}
+
+//   // Пиши код выше этой строки
+//   return matches;
+// }
+
+// console.log(findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7));
+// console.log(findMatches([4, 89, 17, 36, 2], 8, 17, 89, 27, 2));
+// console.log(findMatches([10, 24, 41, 6, 9, 19], 24, 11, 9, 23, 41));
+// console.log(findMatches([63, 11, 8, 29], 4, 7, 16));
+
+// 34. Добавь объекту bookShelf ещё два метода, которые пока 
+//что будут возвращать просто строки по аналогии с getBooks() 
+//и addBook(bookName).
+//Метод removeBook(bookName) будет удалять книгу по имени. 
+//Возвращает строку 'Удаляем книгу <имя книги>', где < имя книги > 
+//это значение параметра bookName.
+//Метод updateBook(oldName, newName) будет обновлять название 
+//книги на новое.Возвращает строку 'Обновляем книгу <старое имя> 
+//на < новое имя > ', где < старое имя > и < новое имя > это 
+//значения параметров oldName и newName соотвественно.
+
+// const bookShelf = {
+//   // Пиши код ниже этой строки
+//   books: ['Последнее королевство', 'Страж снов'],
+//   getBooks() {
+//     return 'Возвращаем все книги';
+//   },
+//   addBook(bookName) {
+//     return `Добавляем книгу ${bookName}`;
+//   },
+//   removeBook(bookName) {
+//   return `Удаляем книгу ${bookName}`;
+//   },
+//   updateBook(oldName, newName) {
+//   return `Обновляем книгу ${oldName} на ${newName}`;}
+//   // Пиши код выше этой строки
+// };
+
+//35. Дополни метод updateBook(oldName, newName) так, чтобы он 
+//изменял название книги с oldName на newName в свойстве books. 
+//Используй indexOf() для того, чтобы найти нужный элемент массива, 
+//и splice() для того чтобы заменить этот элемент.
+
+// const bookShelf = {
+//   books: ['Последнее королевство', 'Мгла', 'Страж снов'],
+//   updateBook(oldName, newName) {
+//     // Пиши код ниже этой строки
+//     const bookIndex = this.books.indexOf(oldName);
+//     this.books.splice(bookIndex, 1, newName);
+//     return this.books;
+			
+//     // Пиши код выше этой строки
+//   },
+// };
+
+// console.log(bookShelf.updateBook('Мгла', 'Хроники подземелий'));
+// console.log(bookShelf.updateBook('Последнее королевство', 'Дюна'));
+
+// 36. К нам обратилась владелица лавки зелий «У старой жабы» и 
+//заказала программу для ведения инвентаря - добавления, удаления, 
+//поиска и обновления зелий.Добавь объекту atTheOldToad свойство 
+//potions, значением которого сделай пустой массив.
+
+// const atTheOldToad = {
+//   // Пиши код ниже этой строки
+//   potions: []
+//   // Пиши код выше этой строки
+// };
+
+//37. Добавь объекту atTheOldToad метод getPotions(), который 
+//просто возвращает значение свойства potions.
+
+// const atTheOldToad = {
+//   // Пиши код ниже этой строки
+//   potions: ['Зелье скорости', 'Дыхание дракона', 'Каменная кожа'],
+//   getPotions() {
+//   return this.potions;}
+//   // Пиши код выше этой строки
+// };
+
+// console.log(atTheOldToad.getPotions());
+
+//38. Дополни метод addPotion(potionName) так, чтобы он 
+//добавлял зелье potionName в конец массива зелий в свойстве potions.
+
+// const atTheOldToad = {
+//   potions: ['Зелье скорости', 'Дыхание дракона', 'Каменная кожа'],
+//   addPotion(potionName) {
+//     // Пиши код ниже этой строки
+//     this.potions.push(potionName);
+//     return this.potions;
+//     // Пиши код выше этой строки
+//   },
+// };
+
+// console.log(atTheOldToad.addPotion('Невидимка'));
+// console.log(atTheOldToad.addPotion('Зелье силы'));
+
+//39. Дополни метод removePotion(potionName) так, чтобы он удалял 
+//зелье potionName из массива зелий в свойстве potions.
+
+// const atTheOldToad = {
+//   potions: ["Зелье скорости", "Дыхание дракона", "Каменная кожа"],
+//   removePotion(potionName) {
+//     // Пиши код ниже этой строки
+//     const potionIndex = this.potions.indexOf(potionName);
+//     this.potions.splice(potionIndex, 1,);
+//     return this.potions;
+    
+//     // Пиши код выше этой строки
+//   },
+// };
+
+// console.log(atTheOldToad.removePotion('Дыхание дракона'));
+// console.log(atTheOldToad.removePotion('Зелье скорости'));
+
+//40. Дополни метод updatePotionName(oldName, newName) так, 
+//чтобы он обновлял название зелья с oldName на newName, в 
+//массиве зелий в свойстве potions.
+
+// const atTheOldToad = {
+//   potions: ['Зелье скорости', 'Дыхание дракона', 'Каменная кожа'],
+//   updatePotionName(oldName, newName) {
+//     // Пиши код ниже этой строки
+//     const potionIndex = this.potions.indexOf(oldName);
+//     this.potions.splice(potionIndex, 1, newName);
+//     return this.potions;
+//     // Пиши код выше этой строки
+//   },
+// };
+
+// console.log(atTheOldToad.updatePotionName('Дыхание дракона', 'Полиморф'));
+// console.log(atTheOldToad.updatePotionName('Каменная кожа', 'Невидимка'));
+
+//41. Заказчица хочет чтобы каждое зелье было представлено не 
+//только именем, но и ценой, а в будущем может быть и другими 
+//характеристиками.Поэтому теперь в свойстве potions будет храниться 
+//массив объектов со следующими свойствами.
